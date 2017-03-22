@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myNinjaApp'>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="angular-to-do-app/content/css/styles.css">
+	<script src="js/lib/angular.min.js" charset="utf-8"></script>
+	<script src="js/app.js" charset="utf-8"></script>
+	<title>Ninja List</title>
+</head>
+<body>
+
+	<div ng-controller="NinjaController">
+		<div class="content">
+			<button ng-click="order='name'">Order by name</button>
+			<button ng-click="order='belt'">Order by belt</button>
+			<input type="text" ng-model="search">
+			<ul>
+				<li ng-repeat="ninja in ninjas|filter:search|orderBy:order" ng-show="{{ninja.available}}">
+					<img ng-src="{{ninja.thumb}}" alt="">
+					<h3>{{ninja.name}} - {{ninja.rate|currency}}</h3>
+					<span class="remove" ng-click="remove(ninja)">X</span>
+					<span class="belt" style="background:{{ninja.belt}}">{{ninja.belt}} Belt</span>
+				</li>
+			</ul>
+<h1>HELLLlllllllllloooooooooooooodfdoo</h1>
+			<form ng-submit="addNinja()">
+				<input type="text" placeholder="Name" ng-model="newNinja.name">
+				<input type="text" placeholder="Belt" ng-model="newNinja.belt">
+				<input type="text" placeholder="Rate" ng-model="newNinja.rate">
+				<input type="submit" value="Submit">
+			</form>
+
+		</div>
+	</div>
+
+</body>
+</html>
